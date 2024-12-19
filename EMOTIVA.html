@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Rows Layout</title>
+  <style>
+    /* Font: Suisse Intl */
+    @font-face {
+      font-family: 'Suisse Intl';
+      src: url('SuisseIntl-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Suisse Intl';
+      src: url('SuisseIntl-RegularItalic.otf') format('opentype');
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Suisse Intl', sans-serif;
+      background-color: white;
+      color: black;
+      height: 100%;
+    }
+
+    /* Fixed Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      z-index: 100;
+      background-color: transparent;
+      mix-blend-mode: difference;
+    }
+
+    header nav {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #FF00FF;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    /* Fixed Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      height: 30px;
+      background-color: transparent;
+      mix-blend-mode: difference;
+    }
+
+    .bottom-nav nav {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .bottom-nav a {
+      text-decoration: none;
+      color: #FF00FF;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .bottom-nav a:nth-child(1) {
+      margin-left: 18px;
+    }
+
+    .bottom-nav a:nth-child(4) {
+      margin-right: 18px;
+    }
+
+    /* Three Rows in the First Section */
+    .section.first {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: auto; /* Adjusts to content height */
+    }
+
+    .row {
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .row.image {
+      height: auto; /* Height determined by the image content */
+      padding: 20px;
+    }
+
+    .row.empty {
+      height: 250px; /* Blank row height */
+      background-color: transparent;
+    }
+
+    .row.paragraphs {
+  display: flex;
+  flex-direction: column; /* Ensure items stack vertically */
+  align-items: flex-start; /* Align text to the left */
+  padding: 18px;
+}
+
+    .row.image img {
+      max-width: 100%; /* Scale image to fit within the row */
+      height: auto; /* Maintain aspect ratio */
+      padding-top: 10px;
+    }
+
+    .row.paragraphs.text-small p {
+      font-size: 18px;
+      line-height: 1;
+      margin: 10px 0;
+      padding: 0 15px; /* Add padding for better spacing */
+    }
+
+    .row.paragraphs.text-big p {
+      font-size: 36px;
+      line-height: 1;
+      margin: 10px 0;
+      padding: 0 18px; /* Add padding for better spacing */
+    }
+
+    .text-big {
+  font-size: 36px;
+}
+
+.text-small {
+  font-size: 18px;
+}
+
+    /* Sections */
+    .section {
+      min-height: 100vh; /* Full viewport height for sections */
+      display: flex;
+    }
+
+    .section.full-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section.research {
+      background-color: black; /* Set black background */
+      color: white; /* Change text color to white for contrast */
+      padding: 16px;
+      text-align: left;
+    }
+
+    .section.research h1 {
+      font-size: 36px;
+      font-style: normal;
+    }
+
+    .section.research p {
+      margin-left: 500px;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .section.full-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+   /* Research Section Styling */
+.section.research, .section.chi-siamo {
+  background-color: black; /* Set black background */
+  color: white; /* Change text color to white for contrast */
+  padding: 16px;
+  text-align: left;
+  min-height: auto; 
+  height: auto;
+}
+
+.section.research h1, .section.chi-siamo h1 {
+  font-size: 36px;
+  font-style: normal;
+}
+
+.section.research p, .section.chi-siamo p {
+  font-size: 24px;
+  line-height: 1;
+  margin-left: 600px;
+}
+
+/* Grid Container for both Research and Chi Siamo */
+.grid-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0; /* Adjust padding if necessary */
+}
+
+.grid-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Make sure the text of "Chi Siamo" section takes full width and aligns well */
+.grid-item p {
+  font-size: 18px;
+  line-height: 1;
+  text-align: left;
+  margin-left: 100px;
+}
+
+
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Sezione Ricerca */
+.section.research {
+  background-color: black;
+  color: white; 
+  padding: 16px;
+  text-align: left;
+  min-height: auto; 
+  height: auto;
+}
+
+.section.research h1 {
+  font-size: 36px;
+  font-style: normal;
+}
+
+.section.research p {
+  font-size: 36px;
+  line-height: 1;
+  margin-left: 600px;
+}
+
+.section.research .grid-item button {
+  margin-top: 0px; /* Add space between the text and the button */
+  padding: 10px 10px; /* Adjust button padding */
+  font-size: 18px;
+  color: white;
+  background-color: #FF00FF;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 600px;
+  margin-bottom: 20px;
+}
+
+.section.research .grid-item button:hover {
+  background-color: black;
+}
+/* Position the text overlay container */
+.text-overlay {
+  position: relative;
+}
+
+.text-columns {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Adjust width as needed */
+  height: auto;
+  z-index: 10;
+  mix-blend-mode: difference;
+
+}
+
+.column {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Credits Section Styling */
+.section.credits {
+  background-color: white; /* Set white background */
+  color: black; /* Set black text color */
+  padding: 25px 18px; /* Add padding for spacing */
+  font-size: 12px; /* Adjust font size */
+  line-height: 1.5; /* Adjust line height for readability */
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Make the text span the full width */
+  margin-bottom: 50px; /* Ensure there's 50px space below */
+}
+
+/* Container for the four columns */
+.columns-container {
+  display: flex; /* Use flexbox to create a row */
+  justify-content: space-between; /* Space between the columns */
+  align-items: center; /* Center align items vertically */
+  gap: 20px; /* 30px between columns */
+}
+
+/* Individual Column Styling */
+.column {
+  flex: 1; /* Each column takes equal space */
+  display: flex; /* Enable flex layout for centering */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+/* Image Styling */
+.column img {
+  max-width: 100%; /* Ensure images don’t overflow */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure images are block-level */
+}
+
+/* Text Column Styling */
+.text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%; /* Ensure the text column takes up full width */
+}
+
+.text-column p {
+  margin: 0; /* Remove margins from paragraphs */
+  font-size: 12px; /* Set text size to 12px */
+  line-height: 1; /* Adjust line height for readability */
+  color: black;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <!-- Sticky Header -->
+  <header>
+    <nav>
+      <a href="#category1">Home Page</a>
+      <a href="#category2">Video</a>
+      <a href="#category3">Ricerca</a>
+      <a href="#category4">Chi Siamo</a>
+    </nav>
+  </header>
+
+  <!-- Three Rows Layout Section -->
+  <div class="section first">
+    <!-- First Row: Image -->
+    <div class="row image">
+      <img src="emotiva.png" alt="Emotiva Logo">
+    </div>
+  
+    <!-- Second Row: Empty Space -->
+    <div class="row empty"></div>
+  
+    <!-- Third Row: Paragraphs -->
+    <div class="row paragraphs">
+      <p class="text-big">Scopri le nostre video pillole per migliorare la consapevolezza emotiva e per trasformare la mobilità pubblica del futuro.</p>
+      <p class="text-small">Abbiamo realizzato brevi video ispirati al libro <em>La vita emotiva del cervello</em>, dello psicologo Richard J. Davidson, per esplorare le 6 dimensioni che creano il tuo stile emotivo.</p>
+    </div>
+  </div>  
+
+  <!-- Video Section -->
+  <div class="section full-video" id="category1">
+    <video autoplay muted loop>
+      <source src="Video Scenario Emotiva.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+ <!-- Research Section -->
+<div class="section research" id="category2">
+  <h1>RICERCA</h1>
+  <div class="grid-container">
+    <div class="grid-item">
+      <p>La nostra ricerca evidenzia l'urgenza<br>di una mobilità che risponda ai bisogni razionali ed emotivi dei giovani, trasformandola in un'esperienza di crescita e consapevolezza.</p>
+      <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+        <!-- Button for downloading the report -->
+        <a href="path/to/report_emotiva.pdf" download="report emotiva .pdf">
+          <button type="button">Scarica Report</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Video Section (Showreel) -->
+  <div class="section full-video">
+    <video autoplay muted loop>
+      <source src="Intuizione_def.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Video Section (scenario) -->
+  <div class="section full-video">
+    <video autoplay muted loop>
+      <source src="Ingaggio_def_01.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+<!-- "Chi Siamo" Section -->
+<div class="section chi-siamo" id="category4">
+  <h1>CHI SIAMO</h1>
+  <div class="grid-container">
+    <div class="grid-item">
+      <p>Il progetto Emotiva nasce all'interno del Laboratorio di Sintesi Finale del corso di Laurea Magistrale in Design della Comunicazione presso il Politecnico di Milano. Il tema affrontato, Next Mobility: La visione delle nuove generazioni sul futuro della mobilità, si propone<br>di immaginare il futuro della mobilità, incrociandolo con altre tematiche importanti per la società e l’ambiente. L’obiettivo del progetto è introdurre l’intelligenza emotiva nel mondo dei trasporti attraverso video-pillole di consapevolezza, ispirate al contenuto<br>del libro <em>La vita emotiva del cervello</em> di Richard J. Davidson, ciascuna progettata per ripensare la mobilità non solo come uno spostamento fisico, ma come un'opportunità di crescita personale<br>e consapevolezza.</p>
+    </div>
+  </div>
+</div>
+
+  <!-- Video Section (Chi Siamo with Text Columns) -->
+  <div class="section full-video text-overlay">
+    <video autoplay muted loop>
+      <source src="CHI_SIAMO.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="text-columns">
+      <div class="column">Camilla Memola</div>
+      <div class="column">Laura Chojnacka</div>
+      <div class="column">Gregorio Torresan</div>
+      <div class="column">Giuseppe Critone</div>
+      <div class="column">Alessia Gaia Russo</div>
+      <div class="column">Marta Zilioli</div>
+    </div>
+  </div>
+  <div class="section credits">
+    <!-- Container for the four columns -->
+    <div class="columns-container">
+      <!-- First column: Image 1 -->
+      <div class="column">
+        <img src="POLIMI_2.png" alt="Image 1">
+      </div>
+      
+      <!-- Second column: Image 2 -->
+      <div class="column">
+        <img src="Logo-Imagislab.png" alt="Image 2">
+      </div>
+      
+      <!-- Third column: Image 3 -->
+      <div class="column">
+        <img src="ddc.png" alt="Image 3">
+      </div>
+      
+      <!-- Fourth column: Text -->
+      <div class="column text-column">
+        <p>
+          NEXT Mobility. La visione delle nuove generazioni sul futuro della mobilità. 
+          <br><br>
+          Laboratorio di Sintesi finale, sez. C2, Corso di Laurea Magistrale in Design della Comunicazione, Scuola del Design, Politecnico di Milano. A.A. 2024-2025. 
+          <br>
+          Docenti: Mariana Ciancia, Katia Goldoni, Francesca Piredda, Marco Ronchi. 
+          <br>
+          Tutor: Silvia Barozzi, Gabriele Carbone. 
+          <br><br>
+          Si ringraziano: 
+          <br>
+          Caterina Petroni, Simone Dall'Angelo, Valentina Dal Brun, Laboratorio Immagine (Dipartimento di Design, Politecnico di Milano), Paolo Garavaglia (Direttore Comunicazione Trenord), per aver supportato l'esperienza di laboratorio con il loro tempo e la loro competenza.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+  <!-- Footer Navigation -->
+  <div class="bottom-nav">
+    <nav>
+      <a href="#category1">Milano, MI</a>
+      <a href="#category2">Italia, ITA</a>
+      <a href="#category3">info@emotiva.it</a>
+      <a href="#category4">LinkedIn</a>
+    </nav>
+  </div>
+</body>
+</html>
